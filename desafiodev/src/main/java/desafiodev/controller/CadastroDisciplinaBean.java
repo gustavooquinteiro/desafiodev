@@ -2,12 +2,16 @@ package desafiodev.controller;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import desafiodev.model.Disciplina;
 import desafiodev.service.CadastroDisciplinaService;
 import desafiodev.util.jsf.FacesUtil;
 
+@Named
+@ViewScoped
 public class CadastroDisciplinaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
