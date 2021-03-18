@@ -18,7 +18,11 @@ public class PesquisaDisciplinaService implements Serializable {
 	@Inject
 	private Disciplinas materias;
 	
-	public List<Disciplina> pesquisar(String nome){
+	public List<Disciplina> pesquisarCurso(String nome){
 		return materias.filtrar(nome);
+	}
+	
+	public List<Disciplina> pesquisarAluno(String nome){
+		return materias.filtrarAluno(nome);
 	}
 }

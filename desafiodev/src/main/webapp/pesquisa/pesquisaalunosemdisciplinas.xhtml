@@ -13,31 +13,18 @@
 	<ui:define name="content">
 	<h:inputText id="pesquisa" value="#{pesquisaDisciplinaBean.nome}"/>
 	<h:commandButton value="Consultar"
-						action="#{pesquisaDisciplinaBean.pesquisarCurso}" update="usuariosTable" />
-	
-	<h:dataTable id="usuariosTable"
+						action="#{pesquisaDisciplinaBean.pesquisarAluno}" update="usuariosTable" />
+	    <h:dataTable id="usuariosTable"
 					emptyMessage="Nenhum usuário encontrado" rows="10" paginator="true"
 					paginatorAlwaysVisible="false" paginatorPosition="bottom"
-					value="#{pesquisaDisciplinaBean.materiasfiltrados}" var="materia">
+					value="#{pesquisaAlunosBean.materiasfiltrados}" var="materia">
 
 					<h:column headerText="Nome" style="width:8em">
 						<h:outputText value="#{materia.nome}" />
 					</h:column>
 
-					<h:column headerText="Valor" style="width:15em;">
-						<h:outputText value="#{materia.valor}" />
-					</h:column>
-
-					<h:column style="width:5em">
-						<h:commandButton title="Matricular" 
-							process="@this">
-							<f:setPropertyActionListener value="#{materia}"
-								target="#{pesquisaDisciplinaBean.materiaSelecionado}" />
-						</h:commandButton>
-					</h:column>
-
 				</h:dataTable>
-	
+				<h:outputLabel>Total = "#{pesquisaDisciplinaBean.valor}"</h:outputLabel>
 	</ui:define>
 	<ui:define name="footer">
 	    Add your footer here or delete to use the default

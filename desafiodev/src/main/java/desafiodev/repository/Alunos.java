@@ -13,6 +13,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import desafiodev.model.Aluno;
+import desafiodev.model.Disciplina;
 
 public class Alunos implements Serializable{
 
@@ -48,6 +49,17 @@ public class Alunos implements Serializable{
 		Session session = manager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Aluno.class);
 		return criteria.list();
+	}
+	@SuppressWarnings("unchecked")
+	public List<Disciplina> pesquisar(String nome) {
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Aluno.class);
+
+		if (StringUtils.isNotBlank(nome)) {
+			criteria.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE));
+		}
+		Aluno b = (Aluno) criteria.list().get(0);
+		return b.getDisciplinas();
 	}
 
 }

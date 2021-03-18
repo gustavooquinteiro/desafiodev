@@ -24,13 +24,29 @@ public class PesquisaDisciplinasBean implements Serializable {
 	private String nome;
 	private List<Disciplina> materiasOfertadas;
 	private Disciplina materiaEscolhida;
+	private double valor;
 	
+	public double getValor() {
+		this.setValor();
+		return valor;
+	}
+
+	public void setValor() {
+		this.valor = 0.0;
+		for (Disciplina d: materiasOfertadas) {
+			this.valor += d.getValor();
+		}
+	}
+
 	public PesquisaDisciplinasBean() {
 		setMateriasOfertadas(new ArrayList<>());
 	}
 	
-	public void pesquisar() {
-		setMateriasOfertadas(pds.pesquisar(nome));
+	public void pesquisarCurso() {
+		setMateriasOfertadas(pds.pesquisarCurso(nome));
+	}
+	public void pesquisarAluno() {
+		setMateriasOfertadas(pds.pesquisarAluno(nome));
 	}
 	
 	public Disciplina getMateriaEscolhida() {
