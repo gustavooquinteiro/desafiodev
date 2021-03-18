@@ -20,6 +20,9 @@ public class Disciplina implements Serializable{
 	@JoinColumn(name = "aluno")
 	private Aluno aluno;
 
+	@ManyToOne
+	@JoinColumn(name = "curso")
+	private Curso curso;
 	public String getNome() {
 		return nome;
 	}
