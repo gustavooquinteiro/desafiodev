@@ -1,0 +1,68 @@
+<ui:composition template="/WEB-INF/template/Template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+	<ui:define name="titulo">Gestão Sistemas</ui:define>
+	<ui:define name="corpo">
+		<f:metadata>
+			<o:viewParam name="usuario" value="#{cadastroUsuarioBean.user}" />
+		</f:metadata>
+		<h:form>
+			<p:fieldset class="fieldset">
+
+				<h1>Usuários</h1>
+
+				<h:panelGrid columns="1" class="cadastrouser" id="cadastrouser">
+					<p:messages autoUpdate="true" closable="true" />
+
+					<p:outputLabel value="Nome: " for="nome" />
+					<p:inputText id="nome" style="width: 100%;"
+						value="#{cadastroAlunoBean.aluno.nome}" />
+
+					<div style="padding-bottom: 1.5em;" />
+
+					<p:outputLabel value="Email: " for="email" />
+					<p:inputText id="email" style="width: 100%;"
+						value="#{cadastroAlunoBean.aluno.login}" required="true" />
+
+					<div style="padding-bottom: 1.5em;" />
+
+					<p:outputLabel value="Senha" for="senha" />
+					<p:password id="senha" style="width: 100%"
+						value="#{cadastroAlunoBean.aluno.senha}" feedback="true"
+						required="true" weakLabel="Senha fraca" goodLabel="Senha boa"
+						strongLabel="Senha forte" promptLabel="Por favor insira uma senha"
+						match="confirma" inline="true"
+						validatorMessage="Por favor digite a mesma senha!" />
+
+					<div style="padding-bottom: 1.5em;" />
+
+					<p:outputLabel value="Confirme sua senha: " for="confirma" />
+					<p:password id="confirma" style="width:100%" required="true" />
+
+					<div style="padding-bottom: 1.5em;" />
+
+			
+				<p:toolbar>
+					<p:toolbarGroup>
+
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{cadastroUsuarioBean.salvar}" update="cadastrouser" />
+
+						<p:button value="Novo Usuário"
+							outcome="/usuarios/CadastroUsuario.xhtml"
+							icon="ui-icon-circle-plus" />
+
+						<p:button value="Pesquisar Usuário"
+							outcome="/usuarios/PesquisaUsuario.xhtml" icon="ui-icon-search" />
+
+					</p:toolbarGroup>
+				</p:toolbar>
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
