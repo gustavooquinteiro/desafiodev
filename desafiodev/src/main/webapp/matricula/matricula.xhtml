@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>
+	<ui:define name="header">
+	    Add your header here or delete to use the default
+	</ui:define>
+	<ui:define name="content">
+	<h:inputText id="pesquisa" value="#{pesquisaDisciplinaBean.nome}"/>
+	<h:commandButton value="Consultar"
+						action="#{pesquisaDisciplinaBean.pesquisarCurso}" update="usuariosTable" />
+	
+	<h:dataTable id="usuariosTable"
+					emptyMessage="Nenhum usuário encontrado" rows="10" paginator="true"
+					paginatorAlwaysVisible="false" paginatorPosition="bottom"
+					value="#{pesquisaDisciplinaBean.materiasfiltrados}" var="materia">
+
+					<h:column headerText="Nome" style="width:8em">
+						<h:outputText value="#{materia.nome}" />
+					</h:column>
+
+					<h:column headerText="Valor" style="width:15em;">
+						<h:outputText value="#{materia.valor}" />
+					</h:column>
+
+					<h:column style="width:5em">
+						<h:commandButton title="Matricular" 
+							process="@this">
+							<f:setPropertyActionListener value="#{materia}"
+								target="#{pesquisaDisciplinaBean.materiaSelecionado}" />
+						</h:commandButton>
+					</h:column>
+
+				</h:dataTable>
+	
+	</ui:define>
+	<ui:define name="footer">
+	    Add your footer here or delete to use the default
+	</ui:define>
+</ui:composition>
+</html>

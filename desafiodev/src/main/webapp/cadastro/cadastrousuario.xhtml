@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	Cadastro de Aluno
+	</h:head>
+<h:body>
+		<h:form>
+					<div style="padding-bottom: 1.5em;" />
+
+					<h:outputLabel value="Nome: " for="nome" />
+					<h:inputText id="nome" value="#{cadastroUsuarioBean.user.nome}" required="true"/>
+
+					<div style="padding-bottom: 1.5em;" />
+
+					<h:outputLabel value="Email: " for="email" />
+					<h:inputText id="email" value="#{cadastroUsuarioBean.user.login}" required="true" />
+
+					<div style="padding-bottom: 1.5em;" />
+
+					<h:outputLabel value="Senha" for="senha" />
+					<h:password id="senha" style="width: 100%"
+						value="#{cadastroUsuarioBean.user.senha}" feedback="true"
+						required="true" weakLabel="Senha fraca" goodLabel="Senha boa"
+						strongLabel="Senha forte" promptLabel="Por favor insira uma senha"
+						match="confirma" inline="true"
+						validatorMessage="Por favor digite a mesma senha!" />
+
+					<div style="padding-bottom: 1.5em;" />
+
+					<h:outputLabel value="Confirme sua senha: " for="confirma" />
+					<h:password id="confirma" style="width:100%" required="true" />
+
+					<div style="padding-bottom: 1.5em;" />
+  					<h:selectBooleanCheckbox value="#{cadastroUsuarioBean.setProfessor}" /> Professor? 
+					<h:selectBooleanCheckbox value="#{cadastroUsuarioBean.setSecretaria}" /> Secretaria?
+					<h:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{cadastroUsuarioBean.salvar}" update="cadastrouser" />
+
+						<h:button value="Novo Usuário"
+							outcome="/usuarios/CadastroUsuario.xhtml"
+							icon="ui-icon-circle-plus" />
+
+						<h:button value="Pesquisar Usuário"
+							outcome="/usuarios/PesquisaUsuario.xhtml" icon="ui-icon-search" />
+
+		</h:form>
+		</h:body>
+		</html>
