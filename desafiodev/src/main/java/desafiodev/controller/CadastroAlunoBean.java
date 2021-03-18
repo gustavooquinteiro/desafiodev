@@ -1,12 +1,14 @@
 package desafiodev.controller;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 
 import desafiodev.model.Aluno;
 import desafiodev.service.CadastroAlunoService;
 import desafiodev.util.jsf.FacesUtil;
 
-public class CadastroAlunoBean {
+public class CadastroAlunoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
