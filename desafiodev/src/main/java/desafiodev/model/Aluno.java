@@ -2,21 +2,19 @@ package desafiodev.model;
 
 import java.util.ArrayList;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 @Entity
 public class Aluno extends Usuario{
 
 	private static final long serialVersionUID = 1L;
 
 	
-	@OneToMany (mappedBy = "aluno", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany 
 	private ArrayList<Disciplina> disciplinas;
 	
-	@OneToMany (mappedBy = "aluno", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany
 	private ArrayList<Disciplina> alternativas;
 	
 	@Column

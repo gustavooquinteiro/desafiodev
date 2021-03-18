@@ -1,11 +1,13 @@
 package desafiodev.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,9 +18,9 @@ public class Disciplina implements Serializable{
 	private String nome;
 	@Column
 	private double valor;
-	@ManyToOne
+	@ManyToMany
 	@JoinColumn(name = "aluno")
-	private Aluno aluno;
+	private ArrayList<Aluno> aluno;
 
 	@ManyToOne
 	@JoinColumn(name = "curso")
@@ -39,12 +41,21 @@ public class Disciplina implements Serializable{
 		this.valor = valor;
 	}
 
-	public Aluno getAluno() {
+
+	public ArrayList<Aluno> getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(Aluno aluno) {
+	public void setAluno(ArrayList<Aluno> aluno) {
 		this.aluno = aluno;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	@Override

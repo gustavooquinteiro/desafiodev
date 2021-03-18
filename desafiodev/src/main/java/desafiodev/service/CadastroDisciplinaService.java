@@ -15,7 +15,9 @@ public class CadastroDisciplinaService implements Serializable {
 	private Disciplinas disciplina;
 	
 	public Disciplina salvar(Disciplina d) {
-		return disciplina.guardar(d);
+		if (d.getAluno().size() < 9)
+			return disciplina.guardar(d);
+		return null;
 	}
 	
 	

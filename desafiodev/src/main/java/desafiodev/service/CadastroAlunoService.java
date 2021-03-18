@@ -16,7 +16,11 @@ public class CadastroAlunoService implements Serializable {
 	private Alunos clientes;
 	
 	public Aluno salvar(Aluno cliente) {
-		return clientes.guardar(cliente); 	
+		if (cliente.getDisciplinas().size() < 3 && cliente.getAlternativas().size() < 1) {
+			return clientes.guardar(cliente); 	
+		} else {
+			return null;
+		}
 	}
 	
 }
