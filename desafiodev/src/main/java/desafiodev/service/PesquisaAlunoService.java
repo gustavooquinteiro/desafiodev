@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import desafiodev.model.Aluno;
 import desafiodev.model.Disciplina;
 import desafiodev.repository.Alunos;
 
@@ -20,5 +21,9 @@ public class PesquisaAlunoService implements Serializable {
 	
 	public List<Disciplina> pesquisar(String nome){
 		return materias.pesquisar(nome);
+	}
+
+	public List<Aluno> pesquisarAluno(String nome) {
+		return materias.pesquisarAluno(nome);
 	}
 }

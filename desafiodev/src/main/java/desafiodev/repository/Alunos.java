@@ -62,4 +62,12 @@ public class Alunos implements Serializable{
 		return b.getDisciplinas();
 	}
 
+	public List<Aluno> pesquisarAluno(String nome) {
+		Session session = manager.unwrap(Session.class);
+		Criteria criteria = session.createCriteria(Disciplina.class);
+		criteria.add(Restrictions.eq(nome, "nome"));
+		Disciplina a = (Disciplina) criteria.list().get(0);
+		return a.getAluno();
+	}
+
 }

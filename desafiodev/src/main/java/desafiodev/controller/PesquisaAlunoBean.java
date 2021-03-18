@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
+import desafiodev.model.Aluno;
 import desafiodev.model.Disciplina;
 import desafiodev.service.PesquisaAlunoService;
 import desafiodev.service.PesquisaDisciplinaService;
@@ -24,6 +25,7 @@ public class PesquisaAlunoBean implements Serializable {
 	
 	private String nome;
 	private List<Disciplina> materiasCadastradas;
+	private List<Aluno> alunosCadastradosNaMateria;
 	
 	public PesquisaAlunoBean() {
 		setmateriasCadastradas(new ArrayList<>());
@@ -33,12 +35,23 @@ public class PesquisaAlunoBean implements Serializable {
 		setmateriasCadastradas(pds.pesquisar(nome));
 	}
 
+	public void pesquisarAlunos(){
+		setAlunosCadastradosNaMateria(pds.pesquisarAluno(nome));
+	}
 	public List<Disciplina> getmateriasCadastradas() {
 		return materiasCadastradas;
 	}
 
 	public void setmateriasCadastradas(List<Disciplina> materiasCadastradas) {
 		this.materiasCadastradas = materiasCadastradas;
+	}
+
+	public List<Aluno> getAlunosCadastradosNaMateria() {
+		return alunosCadastradosNaMateria;
+	}
+
+	public void setAlunosCadastradosNaMateria(List<Aluno> alunosCadastradosNaMateria) {
+		this.alunosCadastradosNaMateria = alunosCadastradosNaMateria;
 	}
 
 }
