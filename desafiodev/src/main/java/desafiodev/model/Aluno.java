@@ -12,11 +12,8 @@ public class Aluno extends Usuario{
 
 	private static final long serialVersionUID = 1L;
 
-	@Column
-	private String nome;
 	
 	@OneToMany (mappedBy = "aluno", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-
 	private ArrayList<Disciplina> disciplinas;
 	
 	@OneToMany (mappedBy = "aluno", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -26,12 +23,7 @@ public class Aluno extends Usuario{
 	private double valorASerPago;
 	
 	
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	
 	public ArrayList<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
@@ -56,7 +48,6 @@ public class Aluno extends Usuario{
 		int result = 1;
 		result = prime * result + ((alternativas == null) ? 0 : alternativas.hashCode());
 		result = prime * result + ((disciplinas == null) ? 0 : disciplinas.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(valorASerPago);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -80,11 +71,6 @@ public class Aluno extends Usuario{
 			if (other.disciplinas != null)
 				return false;
 		} else if (!disciplinas.equals(other.disciplinas))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
 			return false;
 		if (Double.doubleToLongBits(valorASerPago) != Double.doubleToLongBits(other.valorASerPago))
 			return false;
