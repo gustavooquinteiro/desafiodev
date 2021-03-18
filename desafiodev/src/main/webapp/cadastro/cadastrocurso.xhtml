@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>
+	<ui:define name="header">
+	</ui:define>
+	<br/>
+	<ui:define name="content">
+	<h:form>
+	<h:outputLabel value="Nome: " for="nome" >Nome: </h:outputLabel>
+	<h:inputText id="nome" type="text" value="#{cadastroCursoBean.curso.nome}" required="true" readonly="false" rendered="true"/>
+		<h:commandButton value="Salvar" 
+							action="#{cadastroCursoBean.salvar}" update="@form"
+							id="botaoSalvar" />
+	</h:form>
+	</ui:define>
+	<ui:define name="footer">
+	</ui:define>
+</ui:composition>
+</html>
