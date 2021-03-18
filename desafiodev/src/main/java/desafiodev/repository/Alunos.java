@@ -32,15 +32,15 @@ public class Alunos implements Serializable{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Aluno> filtrar(String nome) {
+	public Aluno filtrar(String nome) {
 		Session session = manager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Aluno.class);
 
 		if (StringUtils.isNotBlank(nome)) {
 			criteria.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE));
 		}
-
-		return criteria.list();
+		Aluno b = (Aluno) criteria.list().get(0);
+		return b;
 	}
 
 	@SuppressWarnings("unchecked")

@@ -9,6 +9,7 @@ import javax.inject.Named;
 import desafiodev.model.Aluno;
 import desafiodev.service.CadastroAlunoService;
 import desafiodev.util.jsf.FacesUtil;
+import desafiodev.util.jsf.RestricaoAluno;
 @Named
 @ViewScoped
 public class CadastroAlunoBean implements Serializable {
@@ -29,9 +30,15 @@ public class CadastroAlunoBean implements Serializable {
 	}
 
 	public void salvar() {
-		cus.salvar(aluno);
-		limpar();
-		FacesUtil.addInfoMessage("Cadastro feito com sucesso!!");
+		RestricaoAluno response = cus.salvar(aluno);
+		if (response.equals(RestricaoAluno.VAGAS_ENCERRADAS)) {
+			FacesUtil.addInfoMessage("Inscrições encerradas para a matéria");
+		} else if (response.equals(RestricaoAluno.SOBRECARGA_CH)) {
+			FacesUtil.addInfoMessage("Sobrecarga de carga horária");
+		}else {
+			limpar();
+			FacesUtil.addInfoMessage("Cadastro feito com sucesso!!");
+		}
 	}
 
 	public Aluno getaluno() {

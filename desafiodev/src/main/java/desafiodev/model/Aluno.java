@@ -35,10 +35,14 @@ public class Aluno extends Usuario{
 		this.alternativas = alternativas;
 	}
 	public double getValorASerPago() {
+		this.setValorASerPago();
 		return valorASerPago;
 	}
-	public void setValorASerPago(double valorASerPago) {
-		this.valorASerPago = valorASerPago;
+	public void setValorASerPago() {
+		this.valorASerPago = 0.0;
+		for (Disciplina d: disciplinas) {
+			this.valorASerPago += d.getValor();
+		}
 	}
 	@Override
 	public int hashCode() {
