@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+</h:head>
+<h:body style="background:#eee">
+	<f:metadata>
+		<f:viewParam name="dummy" />
+		<f:event listener="#{loginBean.preRender}" type="preRenderView" />
+	</f:metadata>
+
+	<div id="login-dialog">
+		<h:form id="frm" prependId="false">
+			<h:panelGrid columns="1" styleClass="grid-login">
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+				
+				<p:outputLabel value="E-mail " />
+				<p:inputText id="j_username" size="30"
+					style="display:block; margin-bottom:10px; width:95%;"
+					value="#{loginBean.email}" />
+
+				<p:outputLabel value="Senha" />
+				<p:password id="j_password" size="30"
+					style="display:block; margin-bottom:10px; width:95%;" />
+
+				<p:commandButton style="padding:2px; font-weight: 600"
+					value="Efetuar Login" action="#{loginBean.login}" ajax="false" />
+
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+</h:body>
+</html>
