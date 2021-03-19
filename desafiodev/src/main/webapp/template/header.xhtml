@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">My Facelet Application</div>
+
+<header>
+	<div style="position: fixed; background-color: #eee; width: 100%;">
+
+		<h:form style="display: inline-block">
+
+			<p:menubar>
+				<p:submenu label="☰ " style="font-size: 1.5em;">
+					<p:submenu label="Alunos" icon="fa fa-fw fa-users">
+						<p:menuitem value="Incluir" outcome="/cadastro/cadastroAluno.xhtml" />
+					</p:submenu>
+					<p:submenu label="Curso">
+						<p:menuitem value="Incluir" 
+							outcome="/cadastro/cadastrocurso.xhtml" />
+					</p:submenu>
+					<p:separator />
+					<p:submenu label="Disciplinas" >
+						<p:menuitem value="Incluir"
+							outcome="/cadastro/cadastrodisciplina.xhtml"/>
+					</p:submenu>
+					<p:submenu label="Secretaria">
+						<p:menuitem value="Pesquisa"
+							outcome="/pesquisa/pesquisaalunosemdisciplinas.xhtml" />
+					</p:submenu>
+					<p:submenu label="Professor">
+						<p:menuitem value="Pesquisa"
+							outcome="/pesquisa/pesquisaalunosnasmaterias.xhtml" />
+					</p:submenu>
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+	</div>
+	<h:link outcome="/Home">
+		<h:graphicImage library="imagens" name="logo.png" id="logo" />
+	</h:link> </header>
+
+</body>
+</html>

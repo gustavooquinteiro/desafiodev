@@ -8,7 +8,9 @@
 
 <ui:composition>
 	<ui:define name="header">
-	    Add your header here or delete to use the default
+		<h:head>
+	<ui:composition template="/WEB-INF/template/header.xhtml"/>
+	</h:head>
 	</ui:define>
 	<ui:define name="content">
 	<h:inputText id="pesquisa" value="#{pesquisaDisciplinaBean.nome}"/>
@@ -24,10 +26,10 @@
 					</h:column>
 
 				</h:dataTable>
-				<h:outputLabel>Total = "#{pesquisaDisciplinaBean.valor}"</h:outputLabel>
+				<h:outputLabel value = "Total =" />
+				<h:outputLabel value = "#{pesquisaDisciplinaBean.valor}" />
 	</ui:define>
 	<ui:define name="footer">
-	    Add your footer here or delete to use the default
 	</ui:define>
 </ui:composition>
 </html>

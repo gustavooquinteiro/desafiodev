@@ -1,4 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <properties>
+    <maven.compiler.source>13</maven.compiler.source>
+    <maven.compiler.target>13</maven.compiler.target>
+  </properties> 
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.com.desafiodev</groupId>
   <artifactId>desafiodev</artifactId>
@@ -11,11 +15,14 @@
             <artifactId>jsf-api</artifactId>
             <version>2.2.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>2.2.2</version>
-        </dependency>
+        <!-- Mojarra (implementacao do JSF) -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.2.8</version>
+			<scope>compile</scope>
+		</dependency>
+
           <!-- PrimeFaces (biblioteca de componentes) -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -50,6 +57,30 @@
 			<version>1.1.10.Final</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- Log4J -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Commons Logging (abstrai a implementação de logging) -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Omnifaces (utilitarios para JSF) -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.5</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- Commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -63,20 +94,61 @@
     <artifactId>jstl</artifactId>
     <version>1.2</version>
 </dependency>
+<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
+<!-- API de Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Commons Logging (abstrai a implementação de logging) -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+			<scope>compile</scope>
+		</dependency>
+<!-- Spring Security (autenticação e autorização) -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>[4.2.12,)</version>
+        </dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>4.2.3.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>4.2.3.RELEASE</version>
+		</dependency>
         
     </dependencies>
-  <build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.1</version>
-            <configuration>
-                <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+ <build> <defaultGoal>install</defaultGoal> 
+  <plugins> 
+  <plugin> 
+  <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-war-plugin</artifactId> 
+ <version>3.3.1</version>   <configuration> <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! --> 
+   <failOnMissingWebXml>false</failOnMissingWebXml> 
+   </configuration>
+    <executions> 
+   <execution></execution> 
+   </executions> 
+   </plugin> 
+   </plugins> 
+   </build>
 </project>
